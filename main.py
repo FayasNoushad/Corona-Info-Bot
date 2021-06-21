@@ -14,19 +14,28 @@ API = "https://api.sumanjay.cf/covid/covid/?country="
 @FayasNoushad.on_message(filters.private & filters.text)
 async def covid_info(bot, update):
     country = update.text.replace(" ", "+")
-    info = requests.get(API + country).json()
+    info = requests.get(f'{API}{country}/').json()
+    country = info['country']
+    active = info['active']
+    confirmed = info['confirmed']
+    deaths = info['deaths']
+    info_id = info['id']
+    last_update = info['last_update']
+    latitude = info['latitude']
+    longitude = info['longitude']
+    recovered = info['recovered']
     covid_info = f"""
 --**Covid 19 Information**--
 
-Country : {info['country']}
-Actived : {info['active']}
-Confirmed : {info['confirmed']}
-Deaths : {info['deaths']}
-Id : {info['id']}
-Last Update : {info['last_update']}
-Latitude : {info['latitude']}
-Longitude : {info['longitude']}
-Recovered : {info['recovered']}
+Country : {country}
+Actived : {active}
+Confirmed : {confirmed}
+Deaths : {deaths}
+Id : {info_id}
+Last Update : {last_update}
+Latitude : {latitude}
+Longitude : {longitude}
+Recovered : {recovered}
 
 Made by @FayasNoushad
 """

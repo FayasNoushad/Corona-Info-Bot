@@ -13,14 +13,18 @@ FayasNoushad = Client(
 API = "https://api.sumanjay.cf/covid/?country="
 
 START_TEXT = """
-Hello {}, I am a simple country info telegram bot.
+Hello {}, I am a Disney Team Corona info telegram bot.
 
-Made by @FayasNoushad
+Made by ❤ by @doreamonfans2
+
+Send The Country Name Now And See Magic😁
 """
 
 BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
+        InlineKeyboardButton('👨‍🔧Join Updates Channel👨‍🔧', url='https://telegram.me/disneygrou')
+        InlineKeyboardButton('👨‍💻Devloper👨‍💻', url='https://telegram.me/doreamonfans1')
+        InlineKeyboardButton('🤖Support Group🤖', url='https://telegram.me/disneyteamchat')
         ]]
     )
 
@@ -63,7 +67,7 @@ Latitude : `{latitude}`
 Longitude : `{longitude}`
 Recovered : `{recovered}`
 
-Made by @FayasNoushad
+Made by ❤ by @doreamonfans2
 """
         await update.reply_text(
             text=covid_info,

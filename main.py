@@ -9,7 +9,7 @@ FayasNoushad = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-API = "https://api.sumanjay.cf/covid/covid/?country="
+API = "https://api.sumanjay.cf/covid/?country="
 
 @FayasNoushad.on_message(filters.private & filters.text)
 async def covid_info(bot, update):

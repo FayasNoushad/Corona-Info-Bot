@@ -12,10 +12,27 @@ FayasNoushad = Client(
 
 API = "https://api.sumanjay.cf/covid/?country="
 
+START_TEXT = """
+Hello {}, I am a simple country info telegram bot.
+
+Made by @FayasNoushad
+"""
+
 BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
         ]]
+    )
+
+@FayasNoushad.on_message(filters.command(["start"]))
+async def start(bot, update):
+    text = START_TEXT.format(update.from_user.mention)
+    reply_markup = BUTTONS
+    await update.reply_text(
+        text=text,
+        disable_web_page_preview=True,
+        reply_markup=reply_markup,
+        quote=True
     )
 
 @FayasNoushad.on_message(filters.private & filters.text)

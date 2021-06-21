@@ -1,5 +1,6 @@
 import os
-from pyrogram import Client
+import requests
+from pyrogram import Client, filters
 
 FayasNoushad = Client(
     "Corona-Info-Bot",

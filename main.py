@@ -36,22 +36,23 @@ async def covid_info(bot, update):
         covid_info = f"""
 --**Covid 19 Information**--
 
-Country : {country}
-Actived : {active}
-Confirmed : {confirmed}
-Deaths : {deaths}
-Id : {info_id}
-Last Update : {last_update}
-Latitude : {latitude}
-Longitude : {longitude}
-Recovered : {recovered}
+Country : `{country}`
+Actived : `{active}`
+Confirmed : `{confirmed}`
+Deaths : `{deaths}`
+ID : `{info_id}`
+Last Update : `{last_update}`
+Latitude : `{latitude}`
+Longitude : `{longitude}`
+Recovered : `{recovered}`
 
 Made by @FayasNoushad
 """
         await update.reply_text(
             text=covid_info,
             disable_web_page_preview=True,
-            quote=True
+            quote=True,
+            reply_markup=BUTTONS
         )
     except Exception as error:
         await update.reply_text(

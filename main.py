@@ -1,6 +1,7 @@
 import os
 import requests
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 FayasNoushad = Client(
     "Corona-Info-Bot",
@@ -10,6 +11,12 @@ FayasNoushad = Client(
 )
 
 API = "https://api.sumanjay.cf/covid/?country="
+
+BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
+        ]]
+    )
 
 @FayasNoushad.on_message(filters.private & filters.text)
 async def covid_info(bot, update):
@@ -41,8 +48,16 @@ Recovered : {recovered}
 
 Made by @FayasNoushad
 """
-        await update.reply_text(covid_info)
+        await update.reply_text(
+            text=covid_info,
+            disable_web_page_preview=True,
+            quote=True
+        )
     except Exception as error:
-        await update.reply_text(error)
+        await update.reply_text(
+            text=error,
+            disable_web_page_preview=True,
+            quote=True
+        )
 
 FayasNoushad.run()

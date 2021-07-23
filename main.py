@@ -38,10 +38,19 @@ async def start(bot, update):
     )
 
 @FayasNoushad.on_message(filters.private & filters.text)
-async def covid_info(bot, update):
+async def reply_info(bot, update):
+    country = update.text.replace(" ", "+")
+    reply_markup = BUTTONS
+    await update.reply_text(
+        text=covid_info(country),
+        disable_web_page_preview=True,
+        quote=True,
+        reply_markup=reply_markup
+    )
+
+async def covid_info(country_name):
     try:
-        country = update.text.replace(" ", "+")
-        r = requests.get(API + country)
+        r = requests.get(API + country_name)
         info = r.json()
         country = info['country']
         active = info['active']
@@ -67,17 +76,8 @@ Recovered : `{recovered}`
 
 Made by @FayasNoushad
 """
-        await update.reply_text(
-            text=covid_info,
-            disable_web_page_preview=True,
-            quote=True,
-            reply_markup=BUTTONS
-        )
+        return covid_info
     except Exception as error:
-        await update.reply_text(
-            text=error,
-            disable_web_page_preview=True,
-            quote=True
-        )
+        return error
 
 FayasNoushad.run()

@@ -39,7 +39,7 @@ async def start(bot, update):
 
 @FayasNoushad.on_message(filters.private & filters.text)
 async def reply_info(bot, update):
-    country = update.text.replace(" ", "+")
+    country = update.text.replace(" ", "+").lower()
     reply_markup = BUTTONS
     await update.reply_text(
         text=covid_info(country),

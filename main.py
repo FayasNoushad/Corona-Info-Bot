@@ -15,7 +15,7 @@ FayasNoushad = Client(
 API = "https://api.sumanjay.cf/covid/?country="
 
 START_TEXT = """
-Hello {}, I am a simple country info telegram bot.
+Hello {}, I am a simple corona information of a country telegram bot.
 
 Made by @FayasNoushad
 """

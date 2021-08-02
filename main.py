@@ -2,6 +2,7 @@
 
 import os
 import requests
+from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -39,7 +40,7 @@ async def start(bot, update):
 
 @FayasNoushad.on_message(filters.private & filters.text)
 async def reply_info(bot, update):
-    country = update.text.replace(" ", "+").lower()
+    country = requote_uri(update.text.lower())
     reply_markup = BUTTONS
     await update.reply_text(
         text=covid_info(country),

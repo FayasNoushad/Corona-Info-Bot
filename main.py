@@ -40,10 +40,9 @@ async def start(bot, update):
 
 @FayasNoushad.on_message(filters.private & filters.text)
 async def reply_info(bot, update):
-    country = requote_uri(update.text.lower())
     reply_markup = BUTTONS
     await update.reply_text(
-        text=covid_info(country),
+        text=covid_info(update.text),
         disable_web_page_preview=True,
         quote=True,
         reply_markup=reply_markup
@@ -51,9 +50,9 @@ async def reply_info(bot, update):
 
 async def covid_info(country_name):
     try:
-        r = requests.get(API + country_name)
+        r = requests.get(API + requote_uri(country_name.lower()))
         info = r.json()
-        country = info['country']
+        country = info['country'].capitalize()
         active = info['active']
         confirmed = info['confirmed']
         deaths = info['deaths']

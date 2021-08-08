@@ -48,7 +48,7 @@ async def reply_info(bot, update):
         reply_markup=reply_markup
     )
 
-async def covid_info(country_name):
+def covid_info(country_name):
     try:
         r = requests.get(API + requote_uri(country_name.lower()))
         info = r.json()

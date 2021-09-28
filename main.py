@@ -6,7 +6,8 @@ from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-FayasNoushad = Client(
+
+Bot = Client(
     "Corona-Info-Bot",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
@@ -15,19 +16,14 @@ FayasNoushad = Client(
 
 API = "https://api.sumanjay.cf/covid/?country="
 
-START_TEXT = """
-Hello {}, I am a simple corona information of a country telegram bot.
+START_TEXT = """Hello {}, I am a simple corona information of a country telegram bot.
 
-Made by @FayasNoushad
-"""
+Made by @FayasNoushad"""
 
-BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
-        ]]
-    )
+BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')]])
 
-@FayasNoushad.on_message(filters.private & filters.command(["start"]))
+
+@Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
     text = START_TEXT.format(update.from_user.mention)
     reply_markup = BUTTONS
@@ -38,7 +34,8 @@ async def start(bot, update):
         quote=True
     )
 
-@FayasNoushad.on_message(filters.private & filters.text)
+
+@Bot.on_message(filters.private & filters.text)
 async def reply_info(bot, update):
     reply_markup = BUTTONS
     await update.reply_text(
@@ -47,6 +44,7 @@ async def reply_info(bot, update):
         quote=True,
         reply_markup=reply_markup
     )
+
 
 def covid_info(country_name):
     try:
@@ -61,8 +59,7 @@ def covid_info(country_name):
         latitude = info['latitude']
         longitude = info['longitude']
         recovered = info['recovered']
-        covid_info = f"""
---**Covid 19 Information**--
+        covid_info = f"""--**Covid 19 Information**--
 
 Country : `{country}`
 Actived : `{active}`
@@ -74,10 +71,10 @@ Latitude : `{latitude}`
 Longitude : `{longitude}`
 Recovered : `{recovered}`
 
-Made by @FayasNoushad
-"""
+Made by @FayasNoushad"""
         return covid_info
     except Exception as error:
         return error
 
-FayasNoushad.run()
+
+Bot.run()

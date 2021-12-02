@@ -1,5 +1,3 @@
-# Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
-
 import os
 import requests
 from requests.utils import requote_uri
@@ -16,7 +14,8 @@ Bot = Client(
 
 API = "https://api.sumanjay.cf/covid/?country="
 
-START_TEXT = """Hello {}, I am a simple corona information of a country telegram bot.
+START_TEXT = """Hello {},
+I am a simple corona information of a country telegram bot.
 
 Made by @FayasNoushad"""
 
@@ -25,12 +24,10 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Join Updates Channel 
 
 @Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
-    text = START_TEXT.format(update.from_user.mention)
-    reply_markup = BUTTONS
     await update.reply_text(
-        text=text,
+        text=START_TEXT.format(update.from_user.mention),
         disable_web_page_preview=True,
-        reply_markup=reply_markup,
+        reply_markup=BUTTONS,
         quote=True
     )
 

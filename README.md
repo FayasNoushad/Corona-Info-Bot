@@ -1,22 +1,6 @@
-```
-Made with Python3
-(C) @FayasNoushad
-Copyright permission under MIT License
-License -> https://github.com/FayasNoushad/Corona-Info-Bot/blob/main/LICENSE
-```
+# Corona Info Bot
+A corona information telegram bot
 
----
-
-## Deploy
-
-```sh
-git clone https://github.com/FayasNoushad/Corona-Info-Bot.git
-cd Corona-Info-Bot
-pip3 install -r requirements.txt
-# <Create Variables appropriately>
-python3 main.py
-```
-  
 ---
 
 ## Variables
@@ -27,10 +11,8 @@ python3 main.py
 
 ---
 
-## Credits
+## API
 
-- [Fayas Noushad](https://github.com/FayasNoushad)
-- [Pyrogram](https://github.com/pyrogram/pyrogram)
-- [Covid 19 API](https://api.sumanjay.cf/covid)
+https://api.sumanjay.cf/covid
 
 ---
